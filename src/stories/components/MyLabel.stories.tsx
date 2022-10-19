@@ -1,9 +1,13 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { MyLabel, MyLabelProps } from "../../components/MyLabel";
+import { MyLabel } from "../../components/MyLabel";
 
 export default {
     title: 'UI/MyLabel',
-    component: MyLabel
+    component: MyLabel,
+    argTypes: {
+        color: {control: 'select'},
+        size: {control: 'select'}
+    }
 } as ComponentMeta<typeof MyLabel>
 
 const Template: ComponentStory<typeof MyLabel>= (args) => <MyLabel {...args}/>
@@ -14,5 +18,26 @@ Basic.args = {
 }
 
 export const AllCaps = Template.bind({});
+AllCaps.args = {
+    size:    'normal',
+    allCaps: true
+}
 
 export const Secondary = Template.bind({});
+Secondary.args = {
+    size:  'normal',
+    color: 'secondary'
+}
+
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+    size:  'normal',
+    color: 'tertiary'
+}
+
+export const CustomFontColor = Template.bind({});
+CustomFontColor.args = {
+    size: 'h1',
+    fontColor: '#5517ac'
+}

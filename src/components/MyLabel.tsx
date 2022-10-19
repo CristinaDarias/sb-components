@@ -3,29 +3,46 @@ import './MyLabel.css'
 
 export interface MyLabelProps {
     /**
-     * Texto que aparece en la etiqueta.
+     * Si quiere todo en mayúsculas.
+     */
+    allCaps?: boolean;
+    /**
+     * Colores básicos de la etiqueta.
+     */
+    color?: 'primary' | 'secondary' | 'tertiary';
+    /**
+     * Texto de la etiqueta.
      */
     label?: string;
     /**
-     * Qué tamaño quieres?
+     * Tamaño de la etiqueta.
      */
     size?: 'normal'|'h1'|'h2'|'h3';
+
+    /**
+     * Color de la fuente custom.
+     */
+    fontColor?: string;
 }
 
 /**
  * Componente primario para las etiquetas personalizadas.
- * @param label Texto que aparece en la etiqueta.
- * @param size Tamaño para la etiqueta.
+ * @param param0
  * @returns 
  */
 export const MyLabel = ({
-    label = 'No label', 
-    size  = 'normal'
+    allCaps = false,
+    color   = 'primary',
+    label   = 'No label', 
+    size    = 'normal',
+    fontColor
 }: MyLabelProps) => {
   
     return (
-    <span className={ `${size}` }>
-        {label}
-    </span>
-  )
+        <span 
+            className={ `label ${size} text-${color}`}
+            style={{color: fontColor}}>
+            {allCaps ? label.toUpperCase() : label}
+        </span>
+    )
 }
